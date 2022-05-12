@@ -1,0 +1,40 @@
+footer .top{
+    background-color: #00358E;
+    height: 10rem;
+}
+footer .top .container{
+    display: flex;
+    justify-content: center;
+}
+footer .top .container a{
+    margin: 3rem .5rem;
+    padding: 0rem 1.5rem;
+    text-decoration: none;
+    transition: .5s;
+}
+footer .top .container a:hover{
+    transform: scale(1.2);
+    transition: .5s;
+}
+footer .top .container a img:hover{
+    transform: rotate(1turn);
+    transition: .5s;
+}
+footer .top .container a:active{
+    transform: scale(.5);
+}
+footer .top .container a p{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+
+}
+footer .sub{
+    background-color: #001B49;
+}
+footer .sub p{
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 1rem;
+}

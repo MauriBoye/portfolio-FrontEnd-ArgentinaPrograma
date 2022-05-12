@@ -1,0 +1,62 @@
+
+header{
+    color: white;
+    background-color: #00358E;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+}
+header .logo{
+    height: 3rem;
+    width: 4.3rem;
+}
+header .title{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 0;
+    text-decoration: none;
+    color: white;
+}
+header a .socialMedia{
+    height: 2.7rem;
+    width: 2.7rem;
+    transition: .1s;
+}
+
+header .login a:active{
+    transition: .1s;
+    transform: scale(.85);
+}
+
+header .login{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 0;
+    flex-wrap: wrap;
+}
+
+header .login .social{
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+}
+
+header .login .button{
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+    padding: .3rem 2rem;
+    border-style: solid;
+    border-color: white;
+    border-width: .1rem;
+    transition: .2s;
+}
+
+header .login .button:hover{
+    color: black;
+    background-color: white;
+    transform: scale(1.1);
+    transition: .2s;
+}

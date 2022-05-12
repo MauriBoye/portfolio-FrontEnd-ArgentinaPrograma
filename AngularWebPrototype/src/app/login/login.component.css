@@ -1,0 +1,45 @@
+main .login{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin-top: 5.7rem;
+    margin-bottom: 5.7rem;
+    background-color:#00358E;
+    min-width: 20rem;
+    width: 30%;
+}
+main .login h2{
+    margin-top: 2rem;
+    font-size: 4rem;
+}
+main .login form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+main .login form label{
+    margin-left: 0;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+}
+main .login form input{
+    font-size: 1.5rem;
+}
+main .login form button{
+    margin-top: 2rem;
+    background-color:#00358E;
+    color: white;
+    font-size: 1.4rem;
+    border-style: solid;
+    border-color: white;
+    padding: .5rem 4rem;
+    transition: .2s;
+    border-radius: 3rem;
+}
+main .login form button:hover{
+    color: black;
+    background-color: white;
+    transform: scale(1.1);
+    transition: .2s;
+}

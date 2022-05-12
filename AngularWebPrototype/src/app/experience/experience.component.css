@@ -1,0 +1,29 @@
+.experience{
+    margin: 2.5rem 1rem;
+    border-style: solid;
+    border-color: #B5B5B5;
+    border-width: .15rem;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgb(0, 0, 0,20%);
+}
+.experience .title{
+    padding: 1rem;
+    font-size: 2rem;
+}
+.experience .container{
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1.5rem;
+}
+.experience .container .logo{
+    margin: 0;
+    position: absolute;
+    height: 4.5rem;
+    width: 4.5rem;
+    padding: .5rem 2rem;
+}
+.experience .container .content{
+    margin-left: 8rem;
+    font-size: 1.3rem;
+    margin-right: 2rem;
+}

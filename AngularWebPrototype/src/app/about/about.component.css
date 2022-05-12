@@ -1,0 +1,16 @@
+.about{
+    margin: 2.5rem 1rem;
+    border-style: solid;
+    border-color: #B5B5B5;
+    border-width: .15rem;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgb(0, 0, 0,20%);
+}
+.about .title{
+    padding: 1rem;
+    font-size: 2rem;
+}
+.about .container{
+    padding: 0rem 0rem .5rem 2rem;
+    font-size: 1.5rem;
+}

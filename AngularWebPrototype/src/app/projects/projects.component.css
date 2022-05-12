@@ -1,0 +1,69 @@
+.projects{
+    margin: 2.5rem 1rem;
+    border-style: solid;
+    border-color: #B5B5B5;
+    border-width: .15rem;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgb(0, 0, 0,20%);
+}
+.projects .title{
+    padding: 1rem;
+    font-size: 2rem;
+}
+.projects .container{
+    display: flex;
+    justify-content: flex-start;
+    margin: 0rem 1.5rem 1.5rem 1.5rem;
+    flex-wrap: wrap;
+}
+.projects .card{
+    font-size: 1.3rem;
+    background-color: #00358E;
+    color: white;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 18rem;
+    margin: 1rem 4.65%;
+    transition: .5s;
+}
+.projects .card:hover{
+    box-shadow: 0px 5px 20px rgb(0, 0, 0);
+    transform: scale(1.02);
+    transition: .5s;
+}
+.projects .card img{
+    margin: 1rem auto;
+    width: 10rem;
+}
+.projects .card h3{
+    font-size: 1.6rem;
+    margin-left: .5rem;
+}
+.projects .card h4{
+    font-size: 1rem;
+    font-weight: lighter;
+    margin-left: .5rem;
+}
+.projects .card p{
+    margin: .5rem auto;
+    font-size: 1.1rem;
+    font-weight: lighter;
+    text-align: center;
+}
+.projects .card a{
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+    padding: .3rem 2rem;
+    margin: 1rem auto;
+    border-style: solid;
+    border-color: white;
+    border-width: .1rem;
+    transition: .2s;
+}
+.projects .card a:hover{
+    color: black;
+    background-color: white;
+    transition: .2s;
+}
