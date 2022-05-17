@@ -1,0 +1,43 @@
+<section class="info">
+  <img class="banner" src="assets/img/info/Banner.png" alt="Background" />
+  <img class="profile" src="assets/img/info/Profile.png" alt="Profile" />
+  <div class="personal" *ngIf="edit">
+    <form>
+      <label for="firstName">First Name</label>
+      <input
+      id="firstName"
+        class="name"
+        defaultValue="{{ firstName }}"
+        type="text"
+      />
+      <label for="lastName">Last Name</label>
+      <input
+      id="lastName"
+        class="name"
+        defaultValue="{{ lastName }}"
+        type="text"
+      />
+      <label for="job">Job</label>
+      <input 
+      id="job"
+        class="job"
+        defaultValue="{{ job }}" 
+        type="text" 
+      />
+      <label for="ubication">Ubication</label>
+      <input
+      id="ubication"
+        class="ubication"
+        defaultValue="{{ ubication }}" 
+        type="text" 
+      />
+      <button class="save" (click)="updateInfo()">Save</button>
+    </form>
+  </div>
+  <div class="personal" *ngIf="!edit">
+    <h2 class="name">{{ firstName }} {{ lastName }}</h2>
+    <h3 class="job">{{ job }}</h3>
+    <h4 class="ubication">{{ ubication }}</h4>
+    <button class="edit" (click)="edit = true"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
+  </div>
+</section>
