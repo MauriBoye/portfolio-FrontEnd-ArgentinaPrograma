@@ -42,7 +42,7 @@ form label{
 }
 form input{
     margin-left: 0px;
-    width: 25rem;
+    width: 20rem;
     margin-bottom: .5rem;
 }
 .edit{
@@ -66,11 +66,69 @@ form input{
     padding: .5rem 1.5rem;
     font-size: 1.5rem;
     border-radius: 20px;
-    margin-left: 9.5rem;
+    margin-left: 7rem;
     border-style: hidden;
     transition: .2s;
 }
 .save:hover{
+    transform: scale(1.05);
+    background-color: #001B49;
+    transition: .2s;
+}
+.about{
+    margin: 3rem 1rem 2.5rem 1rem;
+    border-style: solid;
+    border-color: #B5B5B5;
+    border-width: .15rem;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgb(0, 0, 0,20%);
+}
+.about .top{
+    display: flex;
+}
+.about .title{
+    margin: 0;
+    padding: 1rem;
+    font-size: 2rem;
+}
+.about .edit{
+    margin-right: 1rem;
+}
+.about .container{
+    padding: 0rem 2.5rem 1rem 2rem;
+    font-size: 1.5rem;
+}
+.about .container textarea{
+    width: 100%;
+    height: 5.5rem;
+    font-size: 1.5rem;
+    resize: none;
+}
+.about .edit-about{
+    background-color: white;
+    border-style: hidden;
+    margin-right: 1rem;
+    transition: .2s;
+    padding: .5rem;
+}
+.about .edit-about img:hover{
+    transform: scale(1.1);
+    transition: .2s;
+}
+
+.about .save-about{
+    background-color: #00358E;
+    color: white;
+    padding: .5rem 1.5rem;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    border-style: hidden;
+    transition: .2s;
+}
+.save-about:hover{
     transform: scale(1.05);
     background-color: #001B49;
     transition: .2s;

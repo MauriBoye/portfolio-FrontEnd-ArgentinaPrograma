@@ -14,4 +14,7 @@ export class JsonService{
     postJson(url:string, body:any){
         return this.http.post(url, body)
     }
+    updateJson(url:string, body:any){
+        return this.http.put(url, body)
+    }
 }

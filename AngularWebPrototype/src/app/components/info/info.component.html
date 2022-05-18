@@ -1,8 +1,8 @@
 <section class="info">
   <img class="banner" src="assets/img/info/Banner.png" alt="Background" />
   <img class="profile" src="assets/img/info/Profile.png" alt="Profile" />
-  <div class="personal" *ngIf="edit">
-    <form>
+  <div class="personal" *ngIf="editInfo">
+    <form (submit)="updateInfo()">
       <label for="firstName">First Name</label>
       <input
       id="firstName"
@@ -31,13 +31,26 @@
         defaultValue="{{ ubication }}" 
         type="text" 
       />
-      <button class="save" (click)="updateInfo()">Save</button>
+      <button class="save" type="submit">Save</button>
     </form>
   </div>
-  <div class="personal" *ngIf="!edit">
+  <div class="personal" *ngIf="!editInfo">
     <h2 class="name">{{ firstName }} {{ lastName }}</h2>
     <h3 class="job">{{ job }}</h3>
     <h4 class="ubication">{{ ubication }}</h4>
-    <button class="edit" (click)="edit = true"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
+    <button class="edit" (click)="editInfo = true"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
+  </div>
+</section>
+<section class="about">
+  <div class="top">
+      <h2 class="title" >About me</h2>
+      <button class="edit-about" (click)="editAbout = true" *ngIf="!editAbout"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
+      <button class="save-about" (click)="updateInfo()" *ngIf="editAbout">Save</button>
+  </div>
+  <div class="container" *ngIf="!editAbout">
+      <p *ngFor="let item of this.description.split('\n')">{{item}}</p>
+  </div>
+  <div class="container" *ngIf="editAbout">
+      <textarea name="description" id="description" defaultValue="{{ description }}"></textarea>
   </div>
 </section>

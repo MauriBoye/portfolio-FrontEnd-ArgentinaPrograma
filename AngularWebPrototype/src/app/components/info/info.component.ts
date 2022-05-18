@@ -15,19 +15,25 @@ export class InfoComponent implements OnInit {
   lastName="";
   job="";
   ubication="";
-  edit=false;
+  description="";
+  editInfo=false;
+  editAbout=false;
 
   updateInfo(){
-    this.edit = false;
     const data = {
       id: 1,
-      firstName : (<HTMLInputElement>document.getElementById("firstName")).value,
-      lastName : (<HTMLInputElement>document.getElementById("lastName")).value,
-      job : (<HTMLInputElement>document.getElementById("job")).value,
-      ubication : (<HTMLInputElement>document.getElementById("ubication")).value,
+      firstName : this.editInfo?(<HTMLInputElement>document.getElementById("firstName")).value:this.firstName,
+      lastName : this.editInfo?(<HTMLInputElement>document.getElementById("lastName")).value:this.lastName,
+      job : this.editInfo?(<HTMLInputElement>document.getElementById("job")).value:this.job,
+      ubication : this.editInfo?(<HTMLInputElement>document.getElementById("ubication")).value:this.ubication,
+      description: this.editAbout?(<HTMLInputElement>document.getElementById('description')).value:this.description
     }
-    this.json.postJson('http://localhost:8080/api/person/create', data).subscribe(res=>{
+    this.editInfo=false;
+    this.editAbout=false;
+    this.json.updateJson('http://localhost:8080/api/person/update', data).subscribe(res=>{
       this.ngOnInit();
+      console.log(res);
+      
     })
   }
 
@@ -37,6 +43,7 @@ export class InfoComponent implements OnInit {
       this.lastName = res.lastName
       this.job = res.job
       this.ubication = res.ubication
+      this.description = res.description
     })
   }
 }
