@@ -14,6 +14,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainComponent } from './components/main/main.component';
 import { LoginComponent } from './components/login/login.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 const rutas: Routes = [
   { path: '', component: MainComponent},
@@ -37,7 +38,8 @@ const rutas: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(rutas)
+    RouterModule.forRoot(rutas),
+    SweetAlert2Module.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

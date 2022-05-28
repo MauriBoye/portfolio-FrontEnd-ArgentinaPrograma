@@ -1,45 +1,134 @@
 <section class="experience">
+  <div class="top">
     <h2 class="title">Experience</h2>
-    <div class="container">
-        <img class="logo" src="assets/img/experience/CTDLogo.png" alt="CTDLogo">
-        <div class="content">
-          <h3>Dental appoinment booking system / Developer</h3>
-          <h4>Certified Tech Developer (Backend 1 project), Buenos Aires-Argentina</h4>
-          <h4>March, 2022 - April, 2022</h4>
-          <ul>
-            <li>Implement a system to manage the reservation of appointments for a dental clinic with Java.</li>
-            <li>Api rest build with: Java, Spring Boot, Hibernate, JUnit,  MySql.</li>
-            <li>Front-end build with: React, Bootstrap.</li>
-          </ul>
-        </div>
-    </div>
-    <div class="container">
-      <img class="logo" src="assets/img/experience/CityLogo.png" alt="CityLogo">
-      <div class="content">
-        <h3>"Centenario" clock redesign / Team Leader</h3>
-        <h4>Municipality of Allen (Internship), Allen-Argentina</h4>
-        <h4>April, 2020 - December, 2020</h4>
-        <ul>
-          <li>Research and document the most useful functions of a community clock in the city of Allen and increase their habitants comfort 
-            by the redesigning the old clock and assigning new visual modifications as a solution to their needs.</li>
-          <li>Develop a prototype with the Arduino plataform together with a team of 5 people.</li>
-          <li>Give a talk for more than 30 people explaining the project process.</li>
-        </ul>
-      </div>
+    <button class="add" (click)="add = true" ><img src="../../../assets/img/icons/Add.png" alt="EditButton"></button>
   </div>
-  <div class="container">
-    <img class="logo" src="assets/img/experience/CETLogo.png" alt="CETLogo">
-    <div class="content">
-      <h3>School clock design with automatic bell / Team Leader</h3>
-      <h4>Technical High School Nº8, Allen-Argentina</h4>
-      <h4>April, 2019 - December, 2019</h4>
-      <ul>
-        <li>Research and document the main problems that occur daily in the schools that have manual bells and design a new model 
-          to facilitate their use by incorporating visual modifications and an automatic bell system according to their needs.</li>
-        <li>Develop a prototype with the Arduino plataform, a PCB and 3D printer together with a team of 3 people.</li>
-        <li>Implement the new design and evaluate its functionality through feedback from previous users.</li>
-        <li>Give a talk for more than 20 people explaining the project process.</li>
-      </ul>
+  <div class="content add-form" *ngIf="add">
+    <form (submit)="addExperience()">
+      <label for="logoUrl">Logo URL</label>
+          <input
+          id="logoUrl"
+            type="text" 
+          />
+      <div class="top">
+        <div>
+          <label for="title">Title</label>
+          <input
+          id="title"
+            type="text" 
+          />
+        </div>
+        <div>
+          <label for="company">Company</label>
+          <input
+          id="company"
+            type="text" 
+          />
+        </div>
+      </div>
+      <div class="sub">
+        <div>
+          <label for="entryDate">Entry date</label>
+          <input
+          id="entryDate"
+            type="date" 
+          />
+        </div>
+        <div>
+          <label for="exitDate">Exit date</label>
+          <input
+          id="exitDate"
+            type="date" 
+          />
+        </div>
+      </div>
+      
+      <label for="description">Description</label>
+        <textarea name="description" id="description"></textarea>
+        <div class="options">
+          <button class="save" type="submit">Save</button>
+          <button class="cancel" (click)="add = false">Cancel</button>
+        </div>
+    </form>
+  </div>
+      <div *ngFor="let experience of data">
+        <div class="container" >
+          <img class="logo" src="{{experience.logoUrl}}" alt="Logo">
+          <div class="content">
+            <h3>{{experience.title}}</h3>
+            <h4>{{experience.company}}</h4>
+            <h4>{{experience.entryDate}} - {{experience.exitDate}}</h4>
+            <ul *ngFor="let item of this.experience.description.split('\n')">
+              <li>{{item}}</li>
+            </ul>
+          </div>
+          <div class="icons">
+            <button class="edit" (click)="edit = true; idEdit = experience.id"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
+            <button class="delete" [swal]="{ title: 'Do you want delete experience?', text: 'You wont be able to revert this!', icon:'warning',showCancelButton: true, confirmButtonColor: '#3085d6',cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!'}"
+            (confirm)="deleteExperience(experience.id)"
+            ><img src="../../../assets/img/icons/Delete.png" alt="EditButton"></button>
+          </div>
+        </div>
+        <div class="container" *ngIf="edit && idEdit==experience.id">
+          <div class="content">
+            <form (submit)="updateExperience()">
+              <input
+              id="id"
+                value="{{ experience.id }}" 
+                type="text" 
+                readonly
+              />
+              <label for="logoUrl">Logo URL</label>
+              <input
+          id="logoUrl"
+            type="text" 
+            defaultValue="{{ experience.logoUrl }}"
+          />
+              <div class="top">
+                <div>
+                  <label for="title">Title</label>
+                  <input
+                  id="title"
+                    defaultValue="{{ experience.title }}" 
+                    type="text" 
+                  />
+                </div>
+                <div>
+                  <label for="company">Company</label>
+                  <input
+                  id="company"
+                    defaultValue="{{ experience.company }}" 
+                    type="text" 
+                  />
+                </div>
+              </div>
+              <div class="sub">
+                <div>
+                  <label for="entryDate">Entry date</label>
+                  <input
+                  id="entryDate"
+                    defaultValue="{{ experience.entryDate }}" 
+                    type="date" 
+                  />
+                </div>
+                <div>
+                  <label for="exitDate">Exit date</label>
+                  <input
+                  id="exitDate"
+                    defaultValue="{{ experience.exitDate }}" 
+                    type="date" 
+                  />
+                </div>
+              </div>
+              
+              <label for="description">Description</label>
+                <textarea name="description" id="description" defaultValue="{{ experience.description }}"></textarea>
+                <div class="options">
+                  <button class="save" type="submit">Save</button>
+                  <button class="cancel" (click)="edit = false">Cancel</button>
+                </div>
+            </form>
+          </div>
+      </div>
     </div>
-</div>
   </section>

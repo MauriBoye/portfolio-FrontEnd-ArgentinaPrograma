@@ -17,4 +17,10 @@ export class JsonService{
     updateJson(url:string, body:any){
         return this.http.put(url, body)
     }
+    getAll(url:string): Observable<[]>{
+        return this.http.get<[]>(url)
+    }
+    deleteJson(url:string){
+        return this.http.delete(url)
+    }
 }

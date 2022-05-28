@@ -1,43 +1,55 @@
 <section class="info">
-  <img class="banner" src="assets/img/info/Banner.png" alt="Background" />
-  <img class="profile" src="assets/img/info/Profile.png" alt="Profile" />
+  <img class="banner"  src="{{ data.bannerUrl }}" alt="Banner" />
+  <img class="profile" src="{{ data.profileUrl }}" alt="Profile" />
   <div class="personal" *ngIf="editInfo">
     <form (submit)="updateInfo()">
+      <label for="profileUrl">Profile image URL</label>
+      <input
+      id="profileUrl"
+        defaultValue="{{ data.profileUrl }}"
+        type="text"
+      />
+      <label for="bannerUrl">Banner image URL</label>
+      <input
+      id="bannerUrl"
+        defaultValue="{{ data.bannerUrl }}"
+        type="text"
+      />
       <label for="firstName">First Name</label>
       <input
       id="firstName"
         class="name"
-        defaultValue="{{ firstName }}"
+        defaultValue="{{ data.firstName }}"
         type="text"
       />
       <label for="lastName">Last Name</label>
       <input
       id="lastName"
         class="name"
-        defaultValue="{{ lastName }}"
+        defaultValue="{{ data.lastName }}"
         type="text"
       />
       <label for="job">Job</label>
       <input 
       id="job"
         class="job"
-        defaultValue="{{ job }}" 
+        defaultValue="{{ data.job }}" 
         type="text" 
       />
       <label for="ubication">Ubication</label>
       <input
       id="ubication"
         class="ubication"
-        defaultValue="{{ ubication }}" 
+        defaultValue="{{ data.ubication }}" 
         type="text" 
       />
       <button class="save" type="submit">Save</button>
     </form>
   </div>
   <div class="personal" *ngIf="!editInfo">
-    <h2 class="name">{{ firstName }} {{ lastName }}</h2>
-    <h3 class="job">{{ job }}</h3>
-    <h4 class="ubication">{{ ubication }}</h4>
+    <h2 class="name">{{ data.firstName }} {{ data.lastName }}</h2>
+    <h3 class="job">{{ data.job }}</h3>
+    <h4 class="ubication">{{ data.ubication }}</h4>
     <button class="edit" (click)="editInfo = true"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
   </div>
 </section>
@@ -51,6 +63,6 @@
       <p *ngFor="let item of this.description.split('\n')">{{item}}</p>
   </div>
   <div class="container" *ngIf="editAbout">
-      <textarea name="description" id="description" defaultValue="{{ description }}"></textarea>
+      <textarea name="description" id="description" defaultValue="{{ data.description }}"></textarea>
   </div>
 </section>

@@ -6,7 +6,16 @@
     border-radius: 20px;
     box-shadow: 0px 5px 15px rgb(0, 0, 0,20%);
 }
+.experience .top{
+    display: flex;
+}
 .experience .title{
+    margin-left: 0;
+    padding: 1rem;
+    font-size: 2rem;
+}
+.experience .add{
+    margin-right: 1rem;
     padding: 1rem;
     font-size: 2rem;
 }
@@ -26,4 +35,123 @@
     margin-left: 8rem;
     font-size: 1.3rem;
     margin-right: 2rem;
+}
+.experience .edit, .experience .delete, .experience .add{
+    background-color: white;
+    border-style: hidden;
+    transition: .2s;
+    padding: .5rem;
+    height: 100%;
+}
+.experience .edit img:hover, .experience .delete img:hover, .experience .add img:hover{
+    transform: scale(1.1);
+    transition: .2s;
+}
+.options{
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+.save{
+    background-color: #00358E;
+    color: white;
+    padding: .5rem 1.5rem;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    border-style: hidden;
+    transition: .2s;
+}
+.save:hover{
+    transform: scale(1.05);
+    background-color: #001B49;
+    transition: .2s;
+}
+.cancel{
+    background-color: #8e0000;
+    color: white;
+    padding: .5rem 1.5rem;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    border-style: hidden;
+    transition: .2s;
+}
+.cancel:hover{
+    transform: scale(1.05);
+    background-color: #460000;
+    transition: .2s;
+}
+.experience .icons{
+    display: flex;
+    align-items: flex-start;
+    margin-right: 1rem;
+}
+.experience .icons button{
+    display: flex;
+    align-items: flex-start;
+}
+.experience .container .content{
+    width: 100%;
+}
+.experience .container .content form{
+    display: flex;
+    flex-direction: column;
+}
+.experience .container .content form #id{
+    display: none;
+}
+.experience .container .content form label{
+    margin-left: 0;
+    font-weight: bold;
+}
+.experience .container .content form input{
+    margin-left: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    width: 40rem;
+}
+.experience .container .content form textarea{
+    width: 82rem;
+    margin-left: 0;
+    height: 5.5rem;
+    font-size: 1.2rem;
+    resize: none;
+}
+.experience .container .content form .top, .experience .container .content form .sub{
+    margin-left: 0;
+    gap: 1rem;
+}
+.experience .add-form{
+    display: flex;
+    justify-content: center;
+}
+.experience .add-form form{
+    display: flex;
+    flex-direction: column;
+}
+.experience .add-form form label{
+    margin-left: 2rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.experience .add-form form input{
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    width: 40rem;
+}
+.experience .add-form form textarea{
+    width: 82rem;
+    margin-left: 2rem;
+    height: 5.5rem;
+    font-size: 1.2rem;
+    resize: none;
+}
+.experience .top, .experience .sub{
+    display: flex;
+    margin-left: 0;
+}
+.experience .top div, .experience .sub div{
+    display: flex;
+    flex-direction: column;
 }
