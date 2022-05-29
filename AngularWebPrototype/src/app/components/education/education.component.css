@@ -6,7 +6,16 @@
     border-radius: 20px;
     box-shadow: 0px 5px 15px rgb(0, 0, 0,20%);
 }
+.education .top{
+    display: flex;
+}
 .education .title{
+    margin-left: 0;
+    padding: 1rem;
+    font-size: 2rem;
+}
+.education .add{
+    margin-right: 1rem;
     padding: 1rem;
     font-size: 2rem;
 }
@@ -26,4 +35,123 @@
     margin-left: 8rem;
     font-size: 1.3rem;
     margin-right: 2rem;
+}
+.education .edit, .education .delete, .education .add{
+    background-color: white;
+    border-style: hidden;
+    transition: .2s;
+    padding: .5rem;
+    height: 100%;
+}
+.education .edit img:hover, .education .delete img:hover, .education .add img:hover{
+    transform: scale(1.1);
+    transition: .2s;
+}
+.options{
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+.save{
+    background-color: #00358E;
+    color: white;
+    padding: .5rem 1.5rem;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    border-style: hidden;
+    transition: .2s;
+}
+.save:hover{
+    transform: scale(1.05);
+    background-color: #001B49;
+    transition: .2s;
+}
+.cancel{
+    background-color: #8e0000;
+    color: white;
+    padding: .5rem 1.5rem;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    border-style: hidden;
+    transition: .2s;
+}
+.cancel:hover{
+    transform: scale(1.05);
+    background-color: #460000;
+    transition: .2s;
+}
+.education .icons{
+    display: flex;
+    align-items: flex-start;
+    margin-right: 1rem;
+}
+.education .icons button{
+    display: flex;
+    align-items: flex-start;
+}
+.education .container .content{
+    width: 100%;
+}
+.education .container .content form{
+    display: flex;
+    flex-direction: column;
+}
+.education .container .content form #id{
+    display: none;
+}
+.education .container .content form label{
+    margin-left: 0;
+    font-weight: bold;
+}
+.education .container .content form input{
+    margin-left: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    width: 40rem;
+}
+.education .container .content form textarea{
+    width: 82rem;
+    margin-left: 0;
+    height: 5.5rem;
+    font-size: 1.2rem;
+    resize: none;
+}
+.education .container .content form .top, .education .container .content form .sub{
+    margin-left: 0;
+    gap: 1rem;
+}
+.education .add-form{
+    display: flex;
+    justify-content: center;
+}
+.education .add-form form{
+    display: flex;
+    flex-direction: column;
+}
+.education .add-form form label{
+    margin-left: 2rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.education .add-form form input{
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    width: 40rem;
+}
+.education .add-form form textarea{
+    width: 82rem;
+    margin-left: 2rem;
+    height: 5.5rem;
+    font-size: 1.2rem;
+    resize: none;
+}
+.education .top, .education .sub{
+    display: flex;
+    margin-left: 0;
+}
+.education .top div, .education .sub div{
+    display: flex;
+    flex-direction: column;
 }
