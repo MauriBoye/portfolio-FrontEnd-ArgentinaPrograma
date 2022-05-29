@@ -27,3 +27,119 @@
     font-size: 1.3rem;
     margin-right: 2rem;
 }
+.languages .top{
+    display: flex;
+}
+.languages .title{
+    margin-left: 0;
+    padding: 1rem;
+    font-size: 2rem;
+}
+.languages .add{
+    margin-right: 1rem;
+    padding: 1rem;
+    font-size: 2rem;
+}
+.languages .edit, .languages .delete, .languages .add{
+    background-color: white;
+    border-style: hidden;
+    transition: .2s;
+    padding: .5rem;
+    height: 100%;
+}
+.languages .edit img:hover, .languages .delete img:hover, .languages .add img:hover{
+    transform: scale(1.1);
+    transition: .2s;
+}
+.options{
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+.save{
+    background-color: #00358E;
+    color: white;
+    padding: .5rem 1.5rem;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    border-style: hidden;
+    transition: .2s;
+}
+.save:hover{
+    transform: scale(1.05);
+    background-color: #001B49;
+    transition: .2s;
+}
+.cancel{
+    background-color: #8e0000;
+    color: white;
+    padding: .5rem 1.5rem;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    border-style: hidden;
+    transition: .2s;
+}
+.cancel:hover{
+    transform: scale(1.05);
+    background-color: #460000;
+    transition: .2s;
+}
+.languages .icons{
+    display: flex;
+    align-items: flex-start;
+    margin-right: 1rem;
+}
+.languages .icons button{
+    display: flex;
+    align-items: flex-start;
+}
+.hide{
+    display: none;
+}
+.languages  form .add-input {
+    display: flex;
+    flex-direction: column;
+}
+.languages .add-form{
+    display: flex;
+    justify-content: center;
+}
+.languages .add-form form{
+    display: flex;
+    flex-direction: column;
+}
+.languages .add-form form label{
+    margin-left: 2rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.languages .add-form form input, .languages .add-form form select{
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    width: 40rem;
+}
+.languages .container .content{
+    width: 100%;
+}
+.languages .container .content form{
+    display: flex;
+    gap: 10px;
+}
+
+.languages .container .content form label{
+    margin-left: 0;
+    font-weight: bold;
+}
+.languages .container .content form input, .languages .container .content form select{
+    margin-left: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    width: 40rem;
+}
+.languages .container .content form .edit-input{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}

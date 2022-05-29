@@ -1,21 +1,82 @@
 <section class="languages">
+  <div class="top">
     <h2 class="title">Languages</h2>
-    <div class="container">
-        <img class="logo" src="assets/img/languages/SpanishLogo.png" alt="SpanishLogo">
+    <button class="add" (click)="add = true" ><img src="../../../assets/img/icons/Add.png" alt="EditButton"></button>
+  </div>
+  <div class="content add-form" *ngIf="add">
+    <form (submit)="addLanguage()">
+          <div class="add-input">
+            <label for="language">Language</label>
+            <select name="language" id="language" required>
+              <option value="" selected hidden disabled>Select a language</option>
+              <option value="English">English</option>
+              <option value="Spanish">Spanish</option>
+              <option value="French">French</option>
+              <option value="Portuguese">Portuguese</option>
+            </select>
+          </div>
+          <div class="add-input">
+            <label for="description">Description</label>
+            <input
+            id="description"
+              type="text" 
+            />
+          </div>
+        <div class="options">
+          <button class="save" type="submit">Save</button>
+          <button class="cancel" (click)="add = false">Cancel</button>
+        </div>
+    </form>
+  </div>
+    <div *ngFor="let language of data">
+      <div class="container">
+        <img class="logo" src="assets/img/languages/{{language.type}}Logo.png" alt="{{language.type}}Logo">
         <div class="content">
-          <h3>Spanish</h3>
+          <h3>{{language.type}}</h3>
           <ul>
-            <li>Native</li>
+            <li>{{language.description}}</li>
           </ul>
         </div>
+        <div class="icons">
+          <button class="edit" (click)="edit = true; idEdit = language.id"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
+          <button class="delete" [swal]="{ title: 'Do you want delete language?', text: 'You wont be able to revert this!', icon:'warning',showCancelButton: true, confirmButtonColor: '#3085d6',cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!'}"
+          (confirm)="deleteLanguage(language.id)"
+          ><img src="../../../assets/img/icons/Delete.png" alt="EditButton"></button>
+        </div>
     </div>
-    <div class="container">
-      <img class="logo" src="assets/img/languages/EnglishLogo.png" alt="EnglishLogo">
+    <div class="container" *ngIf="edit && idEdit==language.id">
       <div class="content">
-        <h3>English</h3>
-        <ul>
-          <li>B2 UPPER INTERMEDIATE (EF Standard English Test 60/100)</li>
-        </ul>
+        <form (submit)="updateLanguage()">
+          <input
+          id="id"
+          class="hide"
+            value="{{ language.id }}" 
+            type="text" 
+            readonly
+          />
+            <div class="edit-input">
+              <label for="language">Language</label>
+              <select name="language" id="language" required value={{language.type}}>
+                <option value="English">English</option>
+                <option value="Spanish">Spanish</option>
+                <option value="French">French</option>
+                <option value="Portuguese">Portuguese</option>
+              </select>
+            </div>
+            <div class="edit-input">
+              <label for="description">Description</label>
+              <input
+              id="description"
+                defaultValue="{{ language.description }}" 
+                type="text" 
+              />
+            </div>
+            <div class="options">
+              <button class="save" type="submit">Save</button>
+              <button class="cancel" (click)="edit = false">Cancel</button>
+            </div>
+        </form>
       </div>
   </div>
+    </div>
   </section>
