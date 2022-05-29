@@ -1,97 +1,349 @@
 <section class="skills">
-    <h2 class="title">Skills</h2>
-    <div class="container">
+  <h2 class="title">Skills</h2>
+  <div class="container">
       <div class="type">
-        <h3>Front-End</h3>
-        <div class="content">
-          <div class="percentage">
-            <p>Javascript</p>
-            <div class="bar">
-              <p class="progress50percentage">50%</p>
+        <div class="top">
+          <h3>Fron-End</h3>
+          <button class="add" (click)="add = true; idAdd = 'Front'">
+            <img src="../../../assets/img/icons/Add.png" alt="EditButton" />
+          </button>
+        </div>
+        <div class="content add-form" *ngIf="add && idAdd=='Front'">
+          <form (submit)="addSkill()">
+            <input class="hide" id="type" type="text" value="Fron-End"  />
+            <div class="top">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" type="text" />
+              </div>
+              <div>
+                <label for="percentage">Percentage</label>
+                <input id="percentage" type="text" />
+              </div>
+            </div>
+            <div class="options">
+              <button class="save" type="submit">Save</button>
+              <button class="cancel" (click)="add = false">Cancel</button>
+            </div>
+          </form>
+        </div>
+        <div *ngFor="let skill of frontEndType">
+          <div class="content">
+            <div class="percentage">
+              <div class="name-icons">
+                <p>{{ skill.name }}</p>
+                <div class="icons">
+                  <button class="edit" (click)="edit = true; idEdit =skill.id"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
+                  <button class="delete" [swal]="{ title: 'Do you want delete skill?', text: 'You wont be able to revert this!', icon:'warning',showCancelButton: true, confirmButtonColor: '#3085d6',cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!'}"
+                  (confirm)="deleteSkill(skill.id)"
+                  ><img src="../../../assets/img/icons/Delete.png" alt="EditButton"></button>
+                </div>
+              </div>
+              <div class="bar">
+                <p
+                  class="progressPercentage"
+                  [ngStyle]="{ 'width.%': skill.percentage }"
+                >
+                  {{ skill.percentage }}%
+                </p>
+              </div>
             </div>
           </div>
-          <div class="percentage">
-            <p>HTML</p>
-            <div class="bar">
-              <p class="progress70percentage">70%</p>
+          <div class="container" *ngIf="edit && idEdit==skill.id">
+            <div class="content">
+              <form (submit)="updateSkill()">
+                <input class="hide" id="type" type="text" value="Front-End"  />
+                <input
+                id="id"
+                class="hide"
+                  value="{{ skill.id }}" 
+                  type="text" 
+                  readonly
+                />
+                <div class="top">
+                  <div>
+                    <label for="name">Name</label>
+                    <input
+                    id="name"
+                      defaultValue="{{ skill.name }}" 
+                      type="text" 
+                    />
+                  </div>
+                  <div>
+                    <label for="percentage">Percentage</label>
+                    <input
+                    id="percentage"
+                      defaultValue="{{ skill.percentage}}" 
+                      type="text" 
+                    />
+                  </div>
+                </div>
+                  <div class="options">
+                    <button class="save" type="submit">Save</button>
+                    <button class="cancel" (click)="edit = false">Cancel</button>
+                  </div>
+              </form>
             </div>
-          </div>
-          <div class="percentage">
-            <p>CSS</p>
-            <div class="bar">
-              <p class="progress70percentage">70%</p>
-            </div>
-          </div>
+        </div>
         </div>
       </div>
       <div class="type">
-        <h3>Back-End</h3>
-        <div class="content">
-          <div class="percentage">
-            <p>Java</p>
-            <div class="bar">
-              <p class="progress50percentage">50%</p>
+        <div class="top">
+          <h3>Back-End</h3>
+          <button class="add" (click)="add = true; idAdd = 'Back'">
+            <img src="../../../assets/img/icons/Add.png" alt="EditButton" />
+          </button>
+        </div>
+        <div class="content add-form" *ngIf="add && idAdd=='Back'">
+          <form (submit)="addSkill()">
+            <input class="hide" id="type" type="text" value="Back-End"  />
+            <div class="top">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" type="text" />
+              </div>
+              <div>
+                <label for="percentage">Percentage</label>
+                <input id="percentage" type="text" />
+              </div>
+            </div>
+            <div class="options">
+              <button class="save" type="submit">Save</button>
+              <button class="cancel" (click)="add = false">Cancel</button>
+            </div>
+          </form>
+        </div>
+        <div *ngFor="let skill of backEndType">
+          <div class="content">
+            <div class="percentage">
+              <div class="name-icons">
+                <p>{{ skill.name }}</p>
+                <div class="icons">
+                  <button class="edit" (click)="edit = true; idEdit =skill.id"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
+                  <button class="delete" [swal]="{ title: 'Do you want delete skill?', text: 'You wont be able to revert this!', icon:'warning',showCancelButton: true, confirmButtonColor: '#3085d6',cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!'}"
+                  (confirm)="deleteSkill(skill.id)"
+                  ><img src="../../../assets/img/icons/Delete.png" alt="EditButton"></button>
+                </div>
+              </div>
+              <div class="bar">
+                <p
+                  class="progressPercentage"
+                  [ngStyle]="{ 'width.%': skill.percentage }"
+                >
+                  {{ skill.percentage }}%
+                </p>
+              </div>
             </div>
           </div>
-          <div class="percentage">
-            <p>MySQL</p>
-            <div class="bar">
-              <p class="progress70percentage">70%</p>
+          <div class="container" *ngIf="edit && idEdit==skill.id">
+            <div class="content">
+              <form (submit)="updateSkill()">
+                <input class="hide" id="type" type="text" value="Back-End"  />
+                <input
+                class="hide"
+                id="id"
+                  value="{{ skill.id }}" 
+                  type="text" 
+                  readonly
+                />
+                <div class="top">
+                  <div>
+                    <label for="name">Name</label>
+                    <input
+                    id="name"
+                      defaultValue="{{ skill.name }}" 
+                      type="text" 
+                    />
+                  </div>
+                  <div>
+                    <label for="percentage">Percentage</label>
+                    <input
+                    id="percentage"
+                      defaultValue="{{ skill.percentage}}" 
+                      type="text" 
+                    />
+                  </div>
+                </div>
+                  <div class="options">
+                    <button class="save" type="submit">Save</button>
+                    <button class="cancel" (click)="edit = false">Cancel</button>
+                  </div>
+              </form>
             </div>
-          </div>
-          <div class="percentage">
-            <p>Python</p>
-            <div class="bar">
-              <p class="progress30percentage">30%</p>
-            </div>
-          </div>
+        </div>
         </div>
       </div>
       <div class="type">
-        <h3>Soft</h3>
-        <div class="content">
-          <div class="percentage">
-            <p>Design thinking</p>
-            <div class="bar">
-              <p class="progress60percentage">60%</p>
+        <div class="top">
+          <h3>Soft</h3>
+          <button class="add" (click)="add = true; idAdd = 'Soft'">
+            <img src="../../../assets/img/icons/Add.png" alt="EditButton" />
+          </button>
+        </div>
+        <div class="content add-form" *ngIf="add && idAdd == 'Soft'">
+          <form (submit)="addSkill()">
+            <input class="hide" id="type" type="text" value="Soft"  />
+            <div class="top">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" type="text" />
+              </div>
+              <div>
+                <label for="percentage">Percentage</label>
+                <input id="percentage" type="text" />
+              </div>
+            </div>
+            <div class="options">
+              <button class="save" type="submit">Save</button>
+              <button class="cancel" (click)="add = false">Cancel</button>
+            </div>
+          </form>
+        </div>
+        <div *ngFor="let skill of softType">
+          <div class="content">
+            <div class="percentage">
+              <div class="name-icons">
+                <p>{{ skill.name }}</p>
+                <div class="icons">
+                  <button class="edit" (click)="edit = true; idEdit =skill.id"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
+                  <button class="delete" [swal]="{ title: 'Do you want delete skill?', text: 'You wont be able to revert this!', icon:'warning',showCancelButton: true, confirmButtonColor: '#3085d6',cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!'}"
+                  (confirm)="deleteSkill(skill.id)"
+                  ><img src="../../../assets/img/icons/Delete.png" alt="EditButton"></button>
+                </div>
+              </div>
+              <div class="bar">
+                <p
+                  class="progressPercentage"
+                  [ngStyle]="{ 'width.%': skill.percentage }"
+                >
+                  {{ skill.percentage }}%
+                </p>
+              </div>
             </div>
           </div>
-          <div class="percentage">
-            <p>Teamwork</p>
-            <div class="bar">
-              <p class="progress90percentage">90%</p>
+          <div class="container" *ngIf="edit && idEdit==skill.id">
+            <div class="content">
+              <form (submit)="updateSkill()">
+                <input class="hide" id="type" type="text" value="Soft"  />
+                <input
+                id="id"
+                class="hide"
+                  value="{{ skill.id }}" 
+                  type="text" 
+                  readonly
+                />
+                <div class="top">
+                  <div>
+                    <label for="name">Name</label>
+                    <input
+                    id="name"
+                      defaultValue="{{ skill.name }}" 
+                      type="text" 
+                    />
+                  </div>
+                  <div>
+                    <label for="percentage">Percentage</label>
+                    <input
+                    id="percentage"
+                      defaultValue="{{ skill.percentage}}" 
+                      type="text" 
+                    />
+                  </div>
+                </div>
+                  <div class="options">
+                    <button class="save" type="submit">Save</button>
+                    <button class="cancel" (click)="edit = false">Cancel</button>
+                  </div>
+              </form>
             </div>
-          </div>
-          <div class="percentage">
-            <p>Creativity</p>
-            <div class="bar">
-              <p class="progress80percentage">80%</p>
-            </div>
-          </div>
+        </div>
         </div>
       </div>
       <div class="type">
-        <h3>Tools</h3>
-        <div class="content">
-          <div class="percentage">
-            <p>Git</p>
-            <div class="bar">
-              <p class="progress50percentage">50%</p>
+        <div class="top">
+          <h3>Tools</h3>
+          <button class="add" (click)="add = true; idAdd = 'Tool'">
+            <img src="../../../assets/img/icons/Add.png" alt="EditButton" />
+          </button>
+        </div>
+        <div class="content add-form" *ngIf="add && idAdd=='Tool'">
+          <form (submit)="addSkill()">
+            <input class="hide" id="type" type="text" value="Tools"  />
+            <div class="top">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" type="text" />
+              </div>
+              <div>
+                <label for="percentage">Percentage</label>
+                <input id="percentage" type="text" />
+              </div>
+            </div>
+            <div class="options">
+              <button class="save" type="submit">Save</button>
+              <button class="cancel" (click)="add = false">Cancel</button>
+            </div>
+          </form>
+        </div>
+        <div *ngFor="let skill of toolsType">
+          <div class="content">
+            <div class="percentage">
+              <div class="name-icons">
+                <p>{{ skill.name }}</p>
+                <div class="icons">
+                  <button class="edit" (click)="edit = true; idEdit =skill.id"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
+                  <button class="delete" [swal]="{ title: 'Do you want delete skill?', text: 'You wont be able to revert this!', icon:'warning',showCancelButton: true, confirmButtonColor: '#3085d6',cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!'}"
+                  (confirm)="deleteSkill(skill.id)"
+                  ><img src="../../../assets/img/icons/Delete.png" alt="EditButton"></button>
+                </div>
+              </div>
+              <div class="bar">
+                <p
+                  class="progressPercentage"
+                  [ngStyle]="{ 'width.%': skill.percentage }"
+                >
+                  {{ skill.percentage }}%
+                </p>
+              </div>
             </div>
           </div>
-          <div class="percentage">
-            <p>Postman</p>
-            <div class="bar">
-              <p class="progress60percentage">60%</p>
+          <div class="container" *ngIf="edit && idEdit==skill.id">
+            <div class="content">
+              <form (submit)="updateSkill()">
+                <input class="hide" id="type" type="text" value="Tools"  />
+                <input
+                class="hide"
+                id="id"
+                  value="{{ skill.id }}" 
+                  type="text" 
+                  readonly
+                />
+                <div class="top">
+                  <div>
+                    <label for="name">Name</label>
+                    <input
+                    id="name"
+                      defaultValue="{{ skill.name }}" 
+                      type="text" 
+                    />
+                  </div>
+                  <div>
+                    <label for="percentage">Percentage</label>
+                    <input
+                    id="percentage"
+                      defaultValue="{{ skill.percentage}}" 
+                      type="text" 
+                    />
+                  </div>
+                </div>
+                  <div class="options">
+                    <button class="save" type="submit">Save</button>
+                    <button class="cancel" (click)="edit = false">Cancel</button>
+                  </div>
+              </form>
             </div>
-          </div>
-          <div class="percentage">
-            <p>Figma</p>
-            <div class="bar">
-              <p class="progress40percentage">40%</p>
-            </div>
-          </div>
+        </div>
         </div>
       </div>
-    </div>
+  </div>
 </section>
