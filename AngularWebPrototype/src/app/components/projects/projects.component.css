@@ -24,7 +24,7 @@
     display: flex;
     flex-direction: column;
     width: 18rem;
-    margin: 1rem 4.65%;
+    margin: 1rem 1rem;
     transition: .5s;
 }
 .projects .card:hover{
@@ -35,6 +35,7 @@
 .projects .card img{
     margin: 1rem auto;
     width: 10rem;
+    margin-top: -0.5rem;
 }
 .projects .card h3{
     font-size: 1.6rem;
@@ -50,6 +51,9 @@
     font-size: 1.1rem;
     font-weight: lighter;
     text-align: center;
+    height: 63px;
+    align-items: center;
+    display: flex;
 }
 .projects .card a{
     color: white;
@@ -66,4 +70,149 @@
     color: black;
     background-color: white;
     transition: .2s;
+}
+.projects .add{
+    background-color: rgba(255, 255, 255, 0);
+    border-style: hidden;
+    transition: .2s;
+    padding: .5rem;
+    height: 100%;
+}
+.projects .delete, .projects .edit{
+    background-color: rgba(255, 255, 255, 0);
+    border-style: hidden;
+    transition: .2s;
+    padding: .8rem;
+    height: 100%;
+    background-color:#000c22;
+    border-radius: 50%;
+}
+.projects .edit img, .projects .delete img{
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+}
+.projects .edit:hover, .projects .delete:hover, .projects .add:hover{
+    transform: scale(1.05);
+    transition: .2s;
+}
+.projects .top, .projects .sub{
+    display: flex;
+    gap: 10px;
+}
+.projects .img-url{
+    display: flex;
+    flex-direction: column;
+}
+.projects .top div, .projects .sub div{
+    display: flex;
+    flex-direction: column;
+}
+.projects .title{
+    margin-left: 0;
+    padding: 1rem;
+    font-size: 2rem;
+}
+.projects .add{
+    margin-right: 1rem;
+    font-size: 2rem;
+}
+.projects .content{
+    width: 100%;
+}
+.projects .content form{
+    display: flex;
+    flex-direction: column;
+}
+.projects .content form #id{
+    display: none;
+}
+.projects  .content form label{
+    margin-left: 0;
+    font-weight: bold;
+}
+.projects  .content form input{
+    margin-left: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    width: 40rem;
+}
+.projects  .content form textarea{
+    margin-left: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    width: 40rem;
+    resize: none;
+}
+.options{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+.save{
+    background-color: #00358E;
+    color: white;
+    padding: .5rem 1.5rem;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    border-style: hidden;
+    transition: .2s;
+}
+.save:hover{
+    transform: scale(1.05);
+    background-color: #001B49;
+    transition: .2s;
+}
+.cancel{
+    background-color: #8e0000;
+    color: white;
+    padding: .5rem 1.5rem;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    border-style: hidden;
+    transition: .2s;
+}
+.cancel:hover{
+    transform: scale(1.05);
+    background-color: #460000;
+    transition: .2s;
+}
+.icons{
+    position: relative;
+    display: flex;
+    margin-left: 12.5rem;
+    bottom: 1.5rem;
+    gap: 8px;
+}
+.icons i{
+    color: white;
+    font-size: 1.5rem;
+}
+.hide{
+    display: none;
+}
+.card-edit{
+    display: flex;
+}
+.card-edit .edit-form{
+    display: flex;
+    align-items: center;
+}
+.card-edit .edit-form input, .card-edit .edit-form textarea{
+    width: 12rem;
+    margin-bottom: 5px;
+}
+.card-edit .edit-form textarea{
+    resize: none;
+    height: 3rem;
+}
+.card-edit .edit-form label{
+    font-weight: bold;
+}
+.projects .card-edit .edit-form div, .projects .card-edit .edit-form div{
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
 }

@@ -21,6 +21,6 @@ export class JsonService{
         return this.http.get<[]>(url)
     }
     deleteJson(url:string){
-        return this.http.delete(url)
+        return this.http.delete(url, {responseType: 'blob'})
     }
 }
