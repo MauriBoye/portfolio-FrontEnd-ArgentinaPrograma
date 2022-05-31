@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { JsonService } from '../../json.service';
+import { JsonService } from '../../_services/json.service';
+import { StorageService } from '../../_services/storage.service';
 
 @Component({
   selector: 'app-skills',
@@ -19,6 +20,8 @@ export class SkillsComponent implements OnInit {
   edit=false;
   idEdit=0;
   idAdd="";
+  isLoggedIn = false;
+  username?: string;
 
 
   updateSkill(){
@@ -56,7 +59,7 @@ export class SkillsComponent implements OnInit {
     })
   }
   
-  constructor(public json:JsonService) { }
+  constructor(public json:JsonService, private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.json.getJson('http://localhost:8080/api/skill/list').subscribe((res:any)=>{
@@ -83,10 +86,13 @@ export class SkillsComponent implements OnInit {
             tools.push(e)
             this.toolsType = tools
             break;
-          default:
-            console.log('default');
         }
       })
-    })  
+    })
+    this.isLoggedIn = this.storageService.isLoggedIn();
+    if (this.isLoggedIn) {
+      const user = this.storageService.getUser();
+      this.username = user.username;
+    }  
   }
 }

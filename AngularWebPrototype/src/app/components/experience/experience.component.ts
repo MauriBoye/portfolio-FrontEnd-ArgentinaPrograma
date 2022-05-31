@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { JsonService } from '../../json.service';
+import { JsonService } from '../../_services/json.service';
+import { StorageService } from '../../_services/storage.service';
 
 @Component({
   selector: 'app-experience',
@@ -12,6 +13,8 @@ export class ExperienceComponent implements OnInit {
   add=false;
   edit=false;
   idEdit=0;
+  isLoggedIn = false;
+  username?: string;
 
   updateExperience(){
     const body = {
@@ -55,11 +58,16 @@ export class ExperienceComponent implements OnInit {
     })
   }
   
-  constructor(public json:JsonService) { }
+  constructor(public json:JsonService, private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.json.getJson('http://localhost:8080/api/experience/list').subscribe((res:any)=>{
       this.data = res
     })  
+    this.isLoggedIn = this.storageService.isLoggedIn();
+    if (this.isLoggedIn) {
+      const user = this.storageService.getUser();
+      this.username = user.username;
+    }
   }
 }

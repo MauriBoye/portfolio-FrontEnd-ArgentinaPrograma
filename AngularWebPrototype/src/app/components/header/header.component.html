@@ -1,18 +1,38 @@
 <header>
-    <a class="title" routerLink="/">
-      <img
-        class="logo"
-        src="assets/img/header/ArgentinaProgramaLogo.png"
-        alt="ArgentinaProgramaLogo"
-      />
-      <h2>Argentina Programa</h2>
-    </a>
-    <div class="login">
-      <div class="social">
-        <a target="_blank" href="https://www.linkedin.com/in/mauricioboye/"><img class="socialMedia" src="assets/img/icons/LinkedIn.png" alt="LinkedIn" /></a>
-        <a target="_blank" href="mailto:mauriboye@gmail.com"><img class="socialMedia" src="assets/img/icons/Gmail.png" alt="Gmail" /></a>
-        <a target="_blank" href="https://github.com/MauriBoye"><img class="socialMedia" src="assets/img/icons/Github.png" alt="Github" /></a>  
-      </div>
-      <a class="button" routerLink="/login"><h3>Login</h3></a>
+  <a class="title" routerLink="/">
+    <img
+      class="logo"
+      src="assets/img/header/ArgentinaProgramaLogo.png"
+      alt="ArgentinaProgramaLogo"
+    />
+    <h2>Argentina Programa</h2>
+  </a>
+  <div class="login">
+    <div class="social">
+      <a target="_blank" href="https://www.linkedin.com/in/mauricioboye/"
+        ><img
+          class="socialMedia"
+          src="assets/img/icons/LinkedIn.png"
+          alt="LinkedIn"
+      /></a>
+      <a target="_blank" href="mailto:mauriboye@gmail.com"
+        ><img class="socialMedia" src="assets/img/icons/Gmail.png" alt="Gmail"
+      /></a>
+      <a target="_blank" href="https://github.com/MauriBoye"
+        ><img
+          class="socialMedia"
+          src="assets/img/icons/Github.png"
+          alt="Github"
+      /></a>
     </div>
-  </header>
+    <div *ngIf="!isLoggedIn">
+      <!-- <a href="/register" class="nav-link" routerLink="register">Sign Up</a> -->
+      <a class="button" routerLink="/login">Login</a>
+    </div>
+    <div class="user-login" *ngIf="isLoggedIn">
+      <h3>Hola {{ username }}!</h3>
+      <a href class="button" [swal]="{ title: 'Do you want logout?', text: 'You wont be able to revert this!', icon:'warning',showCancelButton: true, confirmButtonColor: '#3085d6',cancelButtonColor: '#d33', confirmButtonText: 'Yes, logout!'}"
+      (confirm)="logout()">LogOut</a>
+    </div>
+  </div>
+</header>

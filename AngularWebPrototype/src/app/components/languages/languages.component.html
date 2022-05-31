@@ -1,7 +1,7 @@
 <section class="languages">
   <div class="top">
     <h2 class="title">Languages</h2>
-    <button class="add" (click)="add = true" ><img src="../../../assets/img/icons/Add.png" alt="EditButton"></button>
+    <button class="add" (click)="add = true" *ngIf="isLoggedIn"><img src="../../../assets/img/icons/Add.png" alt="EditButton"></button>
   </div>
   <div class="content add-form" *ngIf="add">
     <form (submit)="addLanguage()">
@@ -37,7 +37,7 @@
             <li>{{language.description}}</li>
           </ul>
         </div>
-        <div class="icons">
+        <div class="icons" *ngIf="isLoggedIn">
           <button class="edit" (click)="edit = true; idEdit = language.id"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
           <button class="delete" [swal]="{ title: 'Do you want delete language?', text: 'You wont be able to revert this!', icon:'warning',showCancelButton: true, confirmButtonColor: '#3085d6',cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!'}"
           (confirm)="deleteLanguage(language.id)"

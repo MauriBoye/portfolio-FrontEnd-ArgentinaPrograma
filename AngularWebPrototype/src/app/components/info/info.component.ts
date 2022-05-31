@@ -1,6 +1,6 @@
-import { HttpHeaders } from '@angular/common/http';
+import { StorageService } from '../../_services/storage.service';
 import { Component, OnInit } from '@angular/core';
-import { JsonService } from '../../json.service';
+import { JsonService } from '../../_services/json.service';
 
 @Component({
   selector: 'app-info',
@@ -8,8 +8,10 @@ import { JsonService } from '../../json.service';
   styleUrls: ['./info.component.css']
 })
 export class InfoComponent implements OnInit {
+  isLoggedIn = false;
+  username?: string;
 
-  constructor(public json:JsonService){ }
+  constructor(public json:JsonService, private storageService: StorageService){ }
 
   data:any={};
   description="";
@@ -31,8 +33,6 @@ export class InfoComponent implements OnInit {
     this.editAbout=false;
     this.json.updateJson('http://localhost:8080/api/person/update', data).subscribe(res=>{
       this.ngOnInit();
-      console.log(res);
-      
     })
   }
 
@@ -43,5 +43,10 @@ export class InfoComponent implements OnInit {
       this.data.bannerUrl===""?this.data.bannerUrl="https://images.unsplash.com/photo-1531685250784-7569952593d2?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074":this.data.bannerUrl
       this.data.profileUrl===""?this.data.profileUrl="https://cdn-icons-png.flaticon.com/512/848/848006.png?w=826":this.data.profileUrl
     })
+    this.isLoggedIn = this.storageService.isLoggedIn();
+    if (this.isLoggedIn) {
+      const user = this.storageService.getUser();
+      this.username = user.username;
+    }
   }
 }

@@ -87,11 +87,6 @@
     background-color:#000c22;
     border-radius: 50%;
 }
-.projects .edit img, .projects .delete img{
-    height: 30px;
-    width: 30px;
-    margin: 5px;
-}
 .projects .edit:hover, .projects .delete:hover, .projects .add:hover{
     transform: scale(1.05);
     transition: .2s;

@@ -1,12 +1,74 @@
 <main>
-    <div class="login">
-        <h2>Login</h2>
-        <form>
-            <label for="email">Email</label>
-            <input id="email" atype="text">
-            <label for="password">Password</label>
-            <input id="password" type="password">
-            <button type="submit">Login</button>
-        </form>
+  <div class="login">
+    <h2>Login</h2>
+    <form
+      *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="label-input">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="form.username"
+          required
+          #username="ngModel"
+        />
+        <div class="alert-position">
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="username.errors && f.submitted"
+          >
+            <p>Username is required</p>
+          </div>
+        </div>
+      </div>
+      <div class="label-input">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+        />
+        <div >
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="password.errors && f.submitted"
+          >
+            <p *ngIf="password.errors['required']">Password is required</p>
+            <p *ngIf="password.errors['minlength']">
+              Password must be at least 6 characters
+            </p>
+          </div>
+        </div>
+      </div>
+      <button type="submit">Login</button>
+      <div >
+        <div
+        class="alert alert-danger"
+        role="alert"
+        *ngIf="f.submitted && isLoginFailed"
+      >
+        <p>Login failed: {{ errorMessage }}</p>
+      </div>
+      </div>
+      
+    </form>
+    <div class="alert alert-success" *ngIf="isLoggedIn">
+      <h3>Logged in as {{ username }}</h3>
+      <a routerLink="/">Go to home</a>
     </div>
+  </div>
 </main>
