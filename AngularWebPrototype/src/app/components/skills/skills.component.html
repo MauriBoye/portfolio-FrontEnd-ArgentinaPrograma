@@ -1,11 +1,11 @@
 <section class="skills">
   <h2 class="title">Skills</h2>
   <div class="container">
-      <div class="type">
+  <div class="type">
         <div class="top">
           <h3>Fron-End</h3>
           <button class="add" (click)="add = true; idAdd = 'Front'" *ngIf="isLoggedIn">
-            <img src="../../../assets/img/icons/Add.png" alt="EditButton" />
+            <i class="fa-solid fa-circle-plus"></i>
           </button>
         </div>
         <div class="content add-form" *ngIf="add && idAdd=='Front'">
@@ -27,102 +27,108 @@
             </div>
           </form>
         </div>
-        <div *ngFor="let skill of frontEndType">
-          <div class="content">
-            <div class="percentage">
-              <div class="name-icons">
-                <p>{{ skill.name }}</p>
-                <div class="icons" *ngIf="isLoggedIn">
-                  <button class="edit" (click)="edit = true; idEdit =skill.id"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
-                  <button class="delete" [swal]="{ title: 'Do you want delete skill?', text: 'You wont be able to revert this!', icon:'warning',showCancelButton: true, confirmButtonColor: '#3085d6',cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!'}"
-                  (confirm)="deleteSkill(skill.id)"
-                  ><img src="../../../assets/img/icons/Delete.png" alt="EditButton"></button>
+        <div cdkDropList class="example-list" (cdkDropListDropped)="dropFrontEndType($event)">
+          <div class="example-box" [style.cursor]="isLoggedIn?'move':'auto'" *ngFor="let skill of frontEndType" cdkDragBoundary=".example-list" cdkDragLockAxis="y" cdkDrag [cdkDragDisabled]="isLoggedIn?false:true">
+            <div class="container">
+              <div class="content">
+                <div class="percentage">
+                  <div class="name-icons">
+                    <p>{{ skill.name }}</p>
+                    <div class="icons" *ngIf="isLoggedIn">
+                      <button class="edit" (click)="edit = true; idEdit =skill.id"><i class="fa-solid fa-pencil"></i></button>
+                      <button class="delete" [swal]="{ title: 'Do you want delete skill?', text: 'You wont be able to revert this!', icon:'warning',showCancelButton: true, confirmButtonColor: '#3085d6',cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!'}"
+                      (confirm)="deleteSkill(skill.id)"
+                      ><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                  </div>
+                  <div class="bar">
+                    <p
+                      class="progressPercentage"
+                      [ngStyle]="{ 'width.%': skill.percentage }"
+                    >
+                      {{ skill.percentage }}%
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div class="bar">
-                <p
-                  class="progressPercentage"
-                  [ngStyle]="{ 'width.%': skill.percentage }"
-                >
-                  {{ skill.percentage }}%
-                </p>
-              </div>
             </div>
+            <div class="container" *ngIf="edit && idEdit==skill.id">
+              <div class="content">
+                <form (submit)="updateSkill()">
+                  <input class="hide" id="type" type="text" value="Front-End"  />
+                  <input
+                  id="id"
+                  class="hide"
+                    value="{{ skill.id }}" 
+                    type="text" 
+                    readonly
+                  />
+                  <div class="top">
+                    <div>
+                      <label for="name">Name</label>
+                      <input
+                      id="name"
+                        defaultValue="{{ skill.name }}" 
+                        type="text" 
+                      />
+                    </div>
+                    <div>
+                      <label for="percentage">Percentage</label>
+                      <input
+                      id="percentage"
+                        defaultValue="{{ skill.percentage}}" 
+                        type="text" 
+                      />
+                    </div>
+                  </div>
+                    <div class="options">
+                      <button class="save" type="submit">Save</button>
+                      <button class="cancel" (click)="edit = false">Cancel</button>
+                    </div>
+                </form>
+              </div>
           </div>
-          <div class="container" *ngIf="edit && idEdit==skill.id">
-            <div class="content">
-              <form (submit)="updateSkill()">
-                <input class="hide" id="type" type="text" value="Front-End"  />
-                <input
-                id="id"
-                class="hide"
-                  value="{{ skill.id }}" 
-                  type="text" 
-                  readonly
-                />
-                <div class="top">
-                  <div>
-                    <label for="name">Name</label>
-                    <input
-                    id="name"
-                      defaultValue="{{ skill.name }}" 
-                      type="text" 
-                    />
-                  </div>
-                  <div>
-                    <label for="percentage">Percentage</label>
-                    <input
-                    id="percentage"
-                      defaultValue="{{ skill.percentage}}" 
-                      type="text" 
-                    />
-                  </div>
-                </div>
-                  <div class="options">
-                    <button class="save" type="submit">Save</button>
-                    <button class="cancel" (click)="edit = false">Cancel</button>
-                  </div>
-              </form>
-            </div>
-        </div>
         </div>
       </div>
-      <div class="type">
+  </div>
+  <div class="type">
+    <div class="top">
+      <h3>Back-End</h3>
+      <button class="add" (click)="add = true; idAdd = 'Back'" *ngIf="isLoggedIn">
+        <i class="fa-solid fa-circle-plus"></i>
+      </button>
+    </div>
+    <div class="content add-form" *ngIf="add && idAdd=='Back'">
+      <form (submit)="addSkill()">
+        <input class="hide" id="type" type="text" value="Back-End"  />
         <div class="top">
-          <h3>Back-End</h3>
-          <button class="add" (click)="add = true; idAdd = 'Back'" *ngIf="isLoggedIn">
-            <img src="../../../assets/img/icons/Add.png" alt="EditButton" />
-          </button>
+          <div>
+            <label for="name">Name</label>
+            <input id="name" type="text" />
+          </div>
+          <div>
+            <label for="percentage">Percentage</label>
+            <input id="percentage" type="text" />
+          </div>
         </div>
-        <div class="content add-form" *ngIf="add && idAdd=='Back'">
-          <form (submit)="addSkill()">
-            <input class="hide" id="type" type="text" value="Back-End"  />
-            <div class="top">
-              <div>
-                <label for="name">Name</label>
-                <input id="name" type="text" />
-              </div>
-              <div>
-                <label for="percentage">Percentage</label>
-                <input id="percentage" type="text" />
-              </div>
-            </div>
-            <div class="options">
-              <button class="save" type="submit">Save</button>
-              <button class="cancel" (click)="add = false">Cancel</button>
-            </div>
-          </form>
+        <div class="options">
+          <button class="save" type="submit">Save</button>
+          <button class="cancel" (click)="add = false">Cancel</button>
         </div>
-        <div *ngFor="let skill of backEndType">
+      </form>
+    </div>
+    <div cdkDropList class="example-list" (cdkDropListDropped)="dropBackEndType($event)">
+      <div class="example-box" [style.cursor]="isLoggedIn?'move':'auto'" *ngFor="let skill of backEndType" cdkDragBoundary=".example-list" cdkDragLockAxis="y" cdkDrag [cdkDragDisabled]="isLoggedIn?false:true">
+        <div class="container">
           <div class="content">
             <div class="percentage">
               <div class="name-icons">
                 <p>{{ skill.name }}</p>
                 <div class="icons" *ngIf="isLoggedIn">
-                  <button class="edit" (click)="edit = true; idEdit =skill.id"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
+                  <button class="edit" (click)="edit = true; idEdit =skill.id"><i class="fa-solid fa-pencil"></i></button>
                   <button class="delete" [swal]="{ title: 'Do you want delete skill?', text: 'You wont be able to revert this!', icon:'warning',showCancelButton: true, confirmButtonColor: '#3085d6',cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!'}"
                   (confirm)="deleteSkill(skill.id)"
-                  ><img src="../../../assets/img/icons/Delete.png" alt="EditButton"></button>
+                  ><i class="fa-solid fa-trash-can"></i></button>
                 </div>
               </div>
               <div class="bar">
@@ -135,80 +141,84 @@
               </div>
             </div>
           </div>
-          <div class="container" *ngIf="edit && idEdit==skill.id">
-            <div class="content">
-              <form (submit)="updateSkill()">
-                <input class="hide" id="type" type="text" value="Back-End"  />
-                <input
-                class="hide"
-                id="id"
-                  value="{{ skill.id }}" 
-                  type="text" 
-                  readonly
-                />
-                <div class="top">
-                  <div>
-                    <label for="name">Name</label>
-                    <input
-                    id="name"
-                      defaultValue="{{ skill.name }}" 
-                      type="text" 
-                    />
-                  </div>
-                  <div>
-                    <label for="percentage">Percentage</label>
-                    <input
-                    id="percentage"
-                      defaultValue="{{ skill.percentage}}" 
-                      type="text" 
-                    />
-                  </div>
+        </div>
+        <div class="container" *ngIf="edit && idEdit==skill.id">
+          <div class="content">
+            <form (submit)="updateSkill()">
+              <input class="hide" id="type" type="text" value="Front-End"  />
+              <input
+              id="id"
+              class="hide"
+                value="{{ skill.id }}" 
+                type="text" 
+                readonly
+              />
+              <div class="top">
+                <div>
+                  <label for="name">Name</label>
+                  <input
+                  id="name"
+                    defaultValue="{{ skill.name }}" 
+                    type="text" 
+                  />
                 </div>
-                  <div class="options">
-                    <button class="save" type="submit">Save</button>
-                    <button class="cancel" (click)="edit = false">Cancel</button>
-                  </div>
-              </form>
-            </div>
-        </div>
-        </div>
+                <div>
+                  <label for="percentage">Percentage</label>
+                  <input
+                  id="percentage"
+                    defaultValue="{{ skill.percentage}}" 
+                    type="text" 
+                  />
+                </div>
+              </div>
+                <div class="options">
+                  <button class="save" type="submit">Save</button>
+                  <button class="cancel" (click)="edit = false">Cancel</button>
+                </div>
+            </form>
+          </div>
       </div>
-      <div class="type">
+    </div>
+  </div>
+  </div>
+  <div class="type">
+    <div class="top">
+      <h3>Soft</h3>
+      <button class="add" (click)="add = true; idAdd = 'Soft'" *ngIf="isLoggedIn">
+        <i class="fa-solid fa-circle-plus"></i>
+      </button>
+    </div>
+    <div class="content add-form" *ngIf="add && idAdd == 'Soft'">
+      <form (submit)="addSkill()">
+        <input class="hide" id="type" type="text" value="Soft"  />
         <div class="top">
-          <h3>Soft</h3>
-          <button class="add" (click)="add = true; idAdd = 'Soft'" *ngIf="isLoggedIn">
-            <img src="../../../assets/img/icons/Add.png" alt="EditButton" />
-          </button>
+          <div>
+            <label for="name">Name</label>
+            <input id="name" type="text" />
+          </div>
+          <div>
+            <label for="percentage">Percentage</label>
+            <input id="percentage" type="text" />
+          </div>
         </div>
-        <div class="content add-form" *ngIf="add && idAdd == 'Soft'">
-          <form (submit)="addSkill()">
-            <input class="hide" id="type" type="text" value="Soft"  />
-            <div class="top">
-              <div>
-                <label for="name">Name</label>
-                <input id="name" type="text" />
-              </div>
-              <div>
-                <label for="percentage">Percentage</label>
-                <input id="percentage" type="text" />
-              </div>
-            </div>
-            <div class="options">
-              <button class="save" type="submit">Save</button>
-              <button class="cancel" (click)="add = false">Cancel</button>
-            </div>
-          </form>
+        <div class="options">
+          <button class="save" type="submit">Save</button>
+          <button class="cancel" (click)="add = false">Cancel</button>
         </div>
-        <div *ngFor="let skill of softType">
+      </form>
+    </div>
+    <div cdkDropList class="example-list" (cdkDropListDropped)="dropSoftType($event)">
+      <div class="example-box" [style.cursor]="isLoggedIn?'move':'auto'" *ngFor="let skill of softType" cdkDragBoundary=".example-list" cdkDragLockAxis="y" cdkDrag [cdkDragDisabled]="isLoggedIn?false:true">
+        <div class="container">
           <div class="content">
             <div class="percentage">
               <div class="name-icons">
                 <p>{{ skill.name }}</p>
                 <div class="icons" *ngIf="isLoggedIn">
-                  <button class="edit" (click)="edit = true; idEdit =skill.id"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
+                  <button class="edit" (click)="edit = true; idEdit =skill.id"><i class="fa-solid fa-pencil"></i></button>
                   <button class="delete" [swal]="{ title: 'Do you want delete skill?', text: 'You wont be able to revert this!', icon:'warning',showCancelButton: true, confirmButtonColor: '#3085d6',cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!'}"
                   (confirm)="deleteSkill(skill.id)"
-                  ><img src="../../../assets/img/icons/Delete.png" alt="EditButton"></button>
+                  ><i class="fa-solid fa-trash-can"></i></button>
                 </div>
               </div>
               <div class="bar">
@@ -221,80 +231,84 @@
               </div>
             </div>
           </div>
-          <div class="container" *ngIf="edit && idEdit==skill.id">
-            <div class="content">
-              <form (submit)="updateSkill()">
-                <input class="hide" id="type" type="text" value="Soft"  />
-                <input
-                id="id"
-                class="hide"
-                  value="{{ skill.id }}" 
-                  type="text" 
-                  readonly
-                />
-                <div class="top">
-                  <div>
-                    <label for="name">Name</label>
-                    <input
-                    id="name"
-                      defaultValue="{{ skill.name }}" 
-                      type="text" 
-                    />
-                  </div>
-                  <div>
-                    <label for="percentage">Percentage</label>
-                    <input
-                    id="percentage"
-                      defaultValue="{{ skill.percentage}}" 
-                      type="text" 
-                    />
-                  </div>
+        </div>
+        <div class="container" *ngIf="edit && idEdit==skill.id">
+          <div class="content">
+            <form (submit)="updateSkill()">
+              <input class="hide" id="type" type="text" value="Front-End"  />
+              <input
+              id="id"
+              class="hide"
+                value="{{ skill.id }}" 
+                type="text" 
+                readonly
+              />
+              <div class="top">
+                <div>
+                  <label for="name">Name</label>
+                  <input
+                  id="name"
+                    defaultValue="{{ skill.name }}" 
+                    type="text" 
+                  />
                 </div>
-                  <div class="options">
-                    <button class="save" type="submit">Save</button>
-                    <button class="cancel" (click)="edit = false">Cancel</button>
-                  </div>
-              </form>
-            </div>
-        </div>
-        </div>
+                <div>
+                  <label for="percentage">Percentage</label>
+                  <input
+                  id="percentage"
+                    defaultValue="{{ skill.percentage}}" 
+                    type="text" 
+                  />
+                </div>
+              </div>
+                <div class="options">
+                  <button class="save" type="submit">Save</button>
+                  <button class="cancel" (click)="edit = false">Cancel</button>
+                </div>
+            </form>
+          </div>
       </div>
-      <div class="type">
+    </div>
+  </div>
+  </div>
+  <div class="type">
+    <div class="top">
+      <h3>Tools</h3>
+      <button class="add" (click)="add = true; idAdd = 'Tool'" *ngIf="isLoggedIn">
+        <i class="fa-solid fa-circle-plus"></i>
+      </button>
+    </div>
+    <div class="content add-form" *ngIf="add && idAdd=='Tool'">
+      <form (submit)="addSkill()">
+        <input class="hide" id="type" type="text" value="Tools"  />
         <div class="top">
-          <h3>Tools</h3>
-          <button class="add" (click)="add = true; idAdd = 'Tool'" *ngIf="isLoggedIn">
-            <img src="../../../assets/img/icons/Add.png" alt="EditButton" />
-          </button>
+          <div>
+            <label for="name">Name</label>
+            <input id="name" type="text" />
+          </div>
+          <div>
+            <label for="percentage">Percentage</label>
+            <input id="percentage" type="text" />
+          </div>
         </div>
-        <div class="content add-form" *ngIf="add && idAdd=='Tool'">
-          <form (submit)="addSkill()">
-            <input class="hide" id="type" type="text" value="Tools"  />
-            <div class="top">
-              <div>
-                <label for="name">Name</label>
-                <input id="name" type="text" />
-              </div>
-              <div>
-                <label for="percentage">Percentage</label>
-                <input id="percentage" type="text" />
-              </div>
-            </div>
-            <div class="options">
-              <button class="save" type="submit">Save</button>
-              <button class="cancel" (click)="add = false">Cancel</button>
-            </div>
-          </form>
+        <div class="options">
+          <button class="save" type="submit">Save</button>
+          <button class="cancel" (click)="add = false">Cancel</button>
         </div>
-        <div *ngFor="let skill of toolsType">
+      </form>
+    </div>
+    <div cdkDropList class="example-list" (cdkDropListDropped)="dropToolsType($event)">
+      <div (drag)="edit = false" class="example-box" [style.cursor]="isLoggedIn?'move':'auto'" *ngFor="let skill of toolsType" cdkDragBoundary=".example-list" cdkDragLockAxis="y" cdkDrag [cdkDragDisabled]="isLoggedIn?false:true">
+        <div class="container">
           <div class="content">
             <div class="percentage">
               <div class="name-icons">
                 <p>{{ skill.name }}</p>
                 <div class="icons" *ngIf="isLoggedIn">
-                  <button class="edit" (click)="edit = true; idEdit =skill.id"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
+                  <button class="edit" (click)="edit = true; idEdit =skill.id"><i class="fa-solid fa-pencil"></i></button>
                   <button class="delete" [swal]="{ title: 'Do you want delete skill?', text: 'You wont be able to revert this!', icon:'warning',showCancelButton: true, confirmButtonColor: '#3085d6',cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!'}"
                   (confirm)="deleteSkill(skill.id)"
-                  ><img src="../../../assets/img/icons/Delete.png" alt="EditButton"></button>
+                  ><i class="fa-solid fa-trash-can"></i></button>
                 </div>
               </div>
               <div class="bar">
@@ -307,43 +321,45 @@
               </div>
             </div>
           </div>
-          <div class="container" *ngIf="edit && idEdit==skill.id">
-            <div class="content">
-              <form (submit)="updateSkill()">
-                <input class="hide" id="type" type="text" value="Tools"  />
-                <input
-                class="hide"
-                id="id"
-                  value="{{ skill.id }}" 
-                  type="text" 
-                  readonly
-                />
-                <div class="top">
-                  <div>
-                    <label for="name">Name</label>
-                    <input
-                    id="name"
-                      defaultValue="{{ skill.name }}" 
-                      type="text" 
-                    />
-                  </div>
-                  <div>
-                    <label for="percentage">Percentage</label>
-                    <input
-                    id="percentage"
-                      defaultValue="{{ skill.percentage}}" 
-                      type="text" 
-                    />
-                  </div>
+        </div>
+        <div class="container" *ngIf="edit && idEdit==skill.id">
+          <div class="content">
+            <form (submit)="updateSkill()">
+              <input class="hide" id="type" type="text" value="Front-End"  />
+              <input
+              id="id"
+              class="hide"
+                value="{{ skill.id }}" 
+                type="text" 
+                readonly
+              />
+              <div class="top">
+                <div>
+                  <label for="name">Name</label>
+                  <input
+                  id="name"
+                    defaultValue="{{ skill.name }}" 
+                    type="text" 
+                  />
                 </div>
-                  <div class="options">
-                    <button class="save" type="submit">Save</button>
-                    <button class="cancel" (click)="edit = false">Cancel</button>
-                  </div>
-              </form>
-            </div>
-        </div>
-        </div>
+                <div>
+                  <label for="percentage">Percentage</label>
+                  <input
+                  id="percentage"
+                    defaultValue="{{ skill.percentage}}" 
+                    type="text" 
+                  />
+                </div>
+              </div>
+                <div class="options">
+                  <button class="save" type="submit">Save</button>
+                  <button class="cancel" (click)="edit = false">Cancel</button>
+                </div>
+            </form>
+          </div>
       </div>
+    </div>
+  </div>
+  </div>
   </div>
 </section>

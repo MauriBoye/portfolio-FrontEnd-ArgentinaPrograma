@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JsonService } from '../../_services/json.service';
 import { StorageService } from '../../_services/storage.service';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-experience',
@@ -8,6 +9,10 @@ import { StorageService } from '../../_services/storage.service';
   styleUrls: ['./experience.component.css']
 })
 export class ExperienceComponent implements OnInit {
+
+  drop(event: CdkDragDrop<{}>) {
+    moveItemInArray(this.data, event.previousIndex, event.currentIndex);
+  }
 
   data: any  = [];
   add=false;

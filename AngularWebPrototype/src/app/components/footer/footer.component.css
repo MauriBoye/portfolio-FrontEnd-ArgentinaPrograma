@@ -12,11 +12,18 @@ footer .top .container a{
     text-decoration: none;
     transition: .5s;
 }
+footer .top .container a i{
+    display: flex;
+    font-size: 3rem;
+    color: white;
+    justify-content: center;
+    margin-bottom: 5px;
+}
 footer .top .container a:hover{
     transform: scale(1.2);
     transition: .5s;
 }
-footer .top .container a img:hover{
+footer .top .container a i:hover{
     transform: rotate(1turn);
     transition: .5s;
 }

@@ -53,9 +53,10 @@ form input{
     position: relative;
     bottom: 10rem;
     left: 15rem;
+    font-size: 2rem;
 
 }
-.edit img:hover{
+.edit i:hover{
     transform: scale(1.1);
     transition: .2s;
 }
@@ -110,8 +111,9 @@ form input{
     margin-right: 1rem;
     transition: .2s;
     padding: .5rem;
+    font-size: 2rem;
 }
-.about .edit-about img:hover{
+.about .edit-about i:hover{
     transform: scale(1.1);
     transition: .2s;
 }
@@ -131,5 +133,48 @@ form input{
 .save-about:hover{
     transform: scale(1.05);
     background-color: #001B49;
+    transition: .2s;
+}
+.options{
+    display: flex;
+    margin-left: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+.options-about{
+    display: flex;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+.save{
+    background-color: #00358E;
+    margin: 0;
+    color: white;
+    padding: .5rem 1.5rem;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    border-style: hidden;
+    transition: .2s;
+}
+.save:hover{
+    transform: scale(1.05);
+    background-color: #001B49;
+    transition: .2s;
+}
+.cancel{
+    background-color: #8e0000;
+    color: white;
+    padding: .5rem 1.5rem;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    border-style: hidden;
+    transition: .2s;
+}
+.cancel:hover{
+    transform: scale(1.05);
+    background-color: #460000;
     transition: .2s;
 }

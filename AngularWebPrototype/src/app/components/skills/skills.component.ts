@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JsonService } from '../../_services/json.service';
 import { StorageService } from '../../_services/storage.service';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-skills',
@@ -8,6 +9,23 @@ import { StorageService } from '../../_services/storage.service';
   styleUrls: ['./skills.component.css']
 })
 export class SkillsComponent implements OnInit {
+
+  drop(event: CdkDragDrop<{}>) {
+    moveItemInArray(this.data, event.previousIndex, event.currentIndex);
+  }
+  dropFrontEndType(event: CdkDragDrop<{}>) {
+    moveItemInArray(this.frontEndType, event.previousIndex, event.currentIndex);
+  }
+  dropBackEndType(event: CdkDragDrop<{}>) {
+    moveItemInArray(this.backEndType, event.previousIndex, event.currentIndex);
+  }
+  dropSoftType(event: CdkDragDrop<{}>) {
+    moveItemInArray(this.softType, event.previousIndex, event.currentIndex);
+  }
+  dropToolsType(event: CdkDragDrop<{}>) {
+    moveItemInArray(this.toolsType, event.previousIndex, event.currentIndex);
+  }
+
 
   data: any  = [];
   frontEndType:any = [];

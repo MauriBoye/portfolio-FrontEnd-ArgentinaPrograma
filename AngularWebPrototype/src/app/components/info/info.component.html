@@ -43,21 +43,28 @@
         defaultValue="{{ data.ubication }}" 
         type="text" 
       />
-      <button class="save" type="submit">Save</button>
+      <div class="options">
+        <button class="save" type="submit">Save</button>
+        <button class="cancel" (click)="editInfo = false">Cancel</button>
+      </div>
     </form>
   </div>
   <div class="personal" *ngIf="!editInfo">
     <h2 class="name">{{ data.firstName }} {{ data.lastName }}</h2>
     <h3 class="job">{{ data.job }}</h3>
     <h4 class="ubication">{{ data.ubication }}</h4>
-    <button class="edit" (click)="editInfo = true" *ngIf="isLoggedIn"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
+    <button class="edit" (click)="editInfo = true" *ngIf="isLoggedIn"><i class="fa-solid fa-pencil"></i></button>
   </div>
 </section>
 <section class="about">
   <div class="top">
       <h2 class="title" >About me</h2>
-      <button class="edit-about" (click)="editAbout = true" *ngIf="!editAbout && isLoggedIn"><img src="../../../assets/img/icons/Edit.png" alt="EditButton"></button>
-      <button class="save-about" (click)="updateInfo()" *ngIf="editAbout">Save</button>
+      <button class="edit-about" (click)="editAbout = true" *ngIf="!editAbout && isLoggedIn"><i class="fa-solid fa-pencil"></i></button>
+      <div class="options-about" *ngIf="editAbout">
+        <button class="save" (click)="updateInfo()" type="submit">Save</button>
+        <button class="cancel" (click)="editAbout = false">Cancel</button>
+      </div>
+      
   </div>
   <div class="container" *ngIf="!editAbout">
       <p *ngFor="let item of this.description.split('\n')">{{item}}</p>
