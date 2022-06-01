@@ -24,6 +24,7 @@ export class HeaderComponent {
   }
   logout(): void {
     this.authService.logout().subscribe({
+      
       next: res => {
         console.log(res);
         this.isLoggedIn = false;
@@ -33,6 +34,8 @@ export class HeaderComponent {
         console.log(err);
       }
     });
+    this.isLoggedIn = false;
+    window.sessionStorage.clear();
     window.location.reload();
   }
 }

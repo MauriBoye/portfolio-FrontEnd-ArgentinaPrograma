@@ -6,7 +6,7 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+  styleUrls: ['./projects.component.css', 'project-drag-drop.component.css']
 })
 export class ProjectsComponent implements OnInit {
 
@@ -34,7 +34,7 @@ export class ProjectsComponent implements OnInit {
       }
   }
     this.edit=false;
-    this.json.updateJson('http://localhost:8080/api/project/update', body).subscribe(res=>{
+    this.json.updateJson('https://portfolio-mb-arg-programa.herokuapp.com/api/project/update', body).subscribe(res=>{
       this.ngOnInit();
     })
   }
@@ -50,12 +50,12 @@ export class ProjectsComponent implements OnInit {
       }
   }
     this.add=false;
-    this.json.postJson('http://localhost:8080/api/project/create', body).subscribe(res=>{
+    this.json.postJson('https://portfolio-mb-arg-programa.herokuapp.com/api/project/create', body).subscribe(res=>{
       this.ngOnInit();
     })
   }
   deleteProject(id:any){
-    this.json.deleteJson('http://localhost:8080/api/project/delete/' + id).subscribe(res=>{
+    this.json.deleteJson('https://portfolio-mb-arg-programa.herokuapp.com/api/project/delete/' + id).subscribe(res=>{
       this.ngOnInit();
     })
   }
@@ -63,7 +63,7 @@ export class ProjectsComponent implements OnInit {
   constructor(public json:JsonService, private storageService: StorageService) { }
 
   ngOnInit(): void {
-    this.json.getJson('http://localhost:8080/api/project/list').subscribe((res:any)=>{
+    this.json.getJson('https://portfolio-mb-arg-programa.herokuapp.com/api/project/list').subscribe((res:any)=>{
       this.data = res
     })  
     this.isLoggedIn = this.storageService.isLoggedIn();

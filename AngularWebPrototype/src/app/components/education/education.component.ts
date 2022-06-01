@@ -36,7 +36,7 @@ export class EducationComponent implements OnInit {
       }
   }
     this.edit=false;
-    this.json.updateJson('http://localhost:8080/api/education/update', body).subscribe(res=>{
+    this.json.updateJson('https://portfolio-mb-arg-programa.herokuapp.com/api/education/update', body).subscribe(res=>{
       this.ngOnInit();
     })
   }
@@ -53,12 +53,12 @@ export class EducationComponent implements OnInit {
       }
   }
     this.add=false;
-    this.json.postJson('http://localhost:8080/api/education/create', body).subscribe(res=>{
+    this.json.postJson('https://portfolio-mb-arg-programa.herokuapp.com/api/education/create', body).subscribe(res=>{
       this.ngOnInit();
     })
   }
   deleteEducation(id:any){
-    this.json.deleteJson('http://localhost:8080/api/education/delete/' + id).subscribe(res=>{
+    this.json.deleteJson('https://portfolio-mb-arg-programa.herokuapp.com/api/education/delete/' + id).subscribe(res=>{
       this.ngOnInit();
     })
   }
@@ -66,7 +66,7 @@ export class EducationComponent implements OnInit {
   constructor(public json:JsonService, private storageService: StorageService) { }
 
   ngOnInit(): void {
-    this.json.getJson('http://localhost:8080/api/education/list').subscribe((res:any)=>{
+    this.json.getJson('https://portfolio-mb-arg-programa.herokuapp.com/api/education/list').subscribe((res:any)=>{
       this.data = res
     }) 
     this.isLoggedIn = this.storageService.isLoggedIn();

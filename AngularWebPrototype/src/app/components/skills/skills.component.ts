@@ -53,7 +53,7 @@ export class SkillsComponent implements OnInit {
       }
   }
     this.edit=false;
-    this.json.updateJson('http://localhost:8080/api/skill/update', body).subscribe(res=>{
+    this.json.updateJson('https://portfolio-mb-arg-programa.herokuapp.com/api/skill/update', body).subscribe(res=>{
       this.ngOnInit();
     })
   }
@@ -67,12 +67,12 @@ export class SkillsComponent implements OnInit {
       }
   }
     this.add=false;
-    this.json.postJson('http://localhost:8080/api/skill/create', body).subscribe(res=>{
+    this.json.postJson('https://portfolio-mb-arg-programa.herokuapp.com/api/skill/create', body).subscribe(res=>{
       this.ngOnInit();
     })
   }
   deleteSkill(id:any){
-    this.json.deleteJson('http://localhost:8080/api/skill/delete/' + id).subscribe(res=>{
+    this.json.deleteJson('https://portfolio-mb-arg-programa.herokuapp.com/api/skill/delete/' + id).subscribe(res=>{
       this.ngOnInit();
     })
   }
@@ -80,7 +80,7 @@ export class SkillsComponent implements OnInit {
   constructor(public json:JsonService, private storageService: StorageService) { }
 
   ngOnInit(): void {
-    this.json.getJson('http://localhost:8080/api/skill/list').subscribe((res:any)=>{
+    this.json.getJson('https://portfolio-mb-arg-programa.herokuapp.com/api/skill/list').subscribe((res:any)=>{
       this.data = res
       let front:any = []
       let back:any = []

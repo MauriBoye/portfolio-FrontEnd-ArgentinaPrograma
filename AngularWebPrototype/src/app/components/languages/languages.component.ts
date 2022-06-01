@@ -31,7 +31,7 @@ export class LanguagesComponent implements OnInit {
       }
   }
     this.edit=false;
-    this.json.updateJson('http://localhost:8080/api/language/update', body).subscribe(res=>{
+    this.json.updateJson('https://portfolio-mb-arg-programa.herokuapp.com/api/language/update', body).subscribe(res=>{
       this.ngOnInit();
     })
   }
@@ -44,12 +44,12 @@ export class LanguagesComponent implements OnInit {
       }
   }
     this.add=false;
-    this.json.postJson('http://localhost:8080/api/language/create', body).subscribe(res=>{
+    this.json.postJson('https://portfolio-mb-arg-programa.herokuapp.com/api/language/create', body).subscribe(res=>{
       this.ngOnInit();
     })
   }
   deleteLanguage(id:any){
-    this.json.deleteJson('http://localhost:8080/api/language/delete/' + id).subscribe(res=>{
+    this.json.deleteJson('https://portfolio-mb-arg-programa.herokuapp.com/api/language/delete/' + id).subscribe(res=>{
       this.ngOnInit();
     })
   }
@@ -57,7 +57,7 @@ export class LanguagesComponent implements OnInit {
   constructor(public json:JsonService, private storageService: StorageService) { }
 
   ngOnInit(): void {
-    this.json.getJson('http://localhost:8080/api/language/list').subscribe((res:any)=>{
+    this.json.getJson('https://portfolio-mb-arg-programa.herokuapp.com/api/language/list').subscribe((res:any)=>{
       this.data = res
     })  
     this.isLoggedIn = this.storageService.isLoggedIn();
